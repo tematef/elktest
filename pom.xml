@@ -11,6 +11,8 @@
     <name>Check elasticsearch calls</name>
 
     <properties>
+        <java.version>11</java.version>
+
         <junit5.version>5.4.2</junit5.version>
         <junit-platform.version>1.4.0</junit-platform.version>
 

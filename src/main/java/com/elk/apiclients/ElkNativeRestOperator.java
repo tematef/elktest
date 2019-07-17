@@ -44,7 +44,7 @@ public class ElkNativeRestOperator {
             try {
                 client.close();
             } catch (IOException e) {
-                Logger.out.error("Error occured while closing RestHighLevelClient: {}", e.getMessage());
+                Logger.out.error("Error occurred while closing RestHighLevelClient: {}", e.getMessage());
             }
         }
     }
@@ -59,7 +59,7 @@ public class ElkNativeRestOperator {
             try {
                 return client.indices().create(new CreateIndexRequest(indexName), RequestOptions.DEFAULT);
             } catch (IOException e) {
-                String errorMessage = "Error occured while creating %s index";
+                String errorMessage = "Error occurred while creating %s index";
                 Logger.out.error(String.format(errorMessage, indexName));
                 throw new ElkNativeWebServiceException(e, String.format(errorMessage, indexName));
             }
@@ -69,7 +69,7 @@ public class ElkNativeRestOperator {
             try {
                 return client.indices().delete(new DeleteIndexRequest(indexName), RequestOptions.DEFAULT);
             } catch (IOException e) {
-                String errorMessage = "Error occured while deleting %s index";
+                String errorMessage = "Error occurred while deleting %s index";
                 Logger.out.error(String.format(errorMessage, indexName));
                 throw new ElkNativeWebServiceException(e, String.format(errorMessage, indexName));
             }
