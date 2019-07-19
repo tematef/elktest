@@ -15,12 +15,15 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
 import static com.elk.core.api.ResponseFormat.JSON;
 import static com.elk.core.api.ResponseFormat.YAML;
 
 @Epic("Elastic Api Tests")
 @Feature("Post / Update / Search calls")
+@Execution(ExecutionMode.CONCURRENT)
 class ElkTest extends ElkTestCase {
 
     private static IndexElk indexElk;
