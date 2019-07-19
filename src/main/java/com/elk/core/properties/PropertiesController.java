@@ -31,6 +31,10 @@ public final class PropertiesController {
         return Integer.parseInt(getProperty(propertyName));
     }
 
+    public static long getLongProperty(String propertyName) {
+        return Long.parseLong(getProperty(propertyName));
+    }
+
     private static String getPropertyWithCheck(String propertyName) {
         String propertyValue = properties.getProperty(propertyName);
         Optional.ofNullable(propertyValue).orElseThrow(

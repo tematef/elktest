@@ -5,4 +5,5 @@ public final class PropertiesNames {
     public static final String ELASTIC_HOST = "elk.host";
     public static final String ELASTIC_HOST_SCHEMA = "elk.host.schema";
     public static final String ELASTIC_PORT = "elk.port";
+    public static final String ELASTIC_CONNECTION_TIMEOUT = "elk.connection.timeout";
 }

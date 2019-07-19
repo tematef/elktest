@@ -40,9 +40,10 @@ WORKDIR ${TEST_PROJECT_DIR}
 COPY src/ src/
 COPY entrypoint.sh .
 COPY pom.xml .
+RUN mkdir /framework/mnt
 
 # Install test project
-RUN mvn install -B -T 1C -DskipTests=true
+RUN mvn clean install -B -T 1C -DskipTests=true
 
 RUN dos2unix /framework/entrypoint.sh
 

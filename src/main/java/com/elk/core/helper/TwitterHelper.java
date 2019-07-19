@@ -23,7 +23,7 @@ public final class TwitterHelper {
 
     public static TweetDTO generateTweet() {
         return TweetDTO.builder()
-                .user(faker().name().firstName())
+                .user(faker().name().firstName() + faker().number().randomDigit())
                 .postDate(faker().date().past(5, TimeUnit.SECONDS).toInstant().toString())
                 .message(faker().gameOfThrones().quote())
                 .build();

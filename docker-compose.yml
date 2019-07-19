@@ -3,12 +3,6 @@
 version: '3'
 
 services:
-  taf:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    links:
-      - elasticsearch
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.8.1
     environment:
@@ -25,3 +19,11 @@ services:
     image: docker.elastic.co/kibana/kibana:6.8.1
     ports:
       - "5601:5601"
+  taf:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - elasticsearch
+    volumes:
+      - /Users/sheriff/projects/elktest/mnt:/framework/mnt

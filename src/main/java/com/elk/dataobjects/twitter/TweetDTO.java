@@ -1,21 +1,21 @@
 package com.elk.dataobjects.twitter;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Builder
-@EqualsAndHashCode
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class TweetDTO {
 
-    @SerializedName("user")
-    @Expose
+    @JsonProperty("user")
     private String user;
-    @SerializedName("post_date")
-    @Expose
+    @JsonProperty("post_date")
     private String postDate;
-    @SerializedName("message")
-    @Expose
+    @JsonProperty("message")
     private String message;
 }

@@ -1,91 +1,66 @@
 package com.elk.dataobjects.elk.api;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Getter
-@EqualsAndHashCode
+@Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchElkResponse {
 
-    @SerializedName("took")
-    @Expose
+    @JsonProperty("took")
     private int took;
-    @SerializedName("timed_out")
-    @Expose
+    @JsonProperty("timed_out")
     private boolean timedOut;
-    @SerializedName("_shards")
-    @Expose
+    @JsonProperty("_shards")
     private Shards shards;
-    @SerializedName("hits")
-    @Expose
+    @JsonProperty("hits")
     private Hits hits;
 
-    @EqualsAndHashCode
-    private class Hits {
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Hits {
 
-        @SerializedName("total")
-        @Expose
+        @JsonProperty("total")
         private int total;
-        @SerializedName("max_score")
-        @Expose
+        @JsonProperty("max_score")
         private double maxScore;
-        @SerializedName("hits")
-        @Expose
+        @JsonProperty("hits")
         private List<Hit> hits = null;
     }
 
-    @EqualsAndHashCode
-    private class Hit {
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Hit {
 
-        @SerializedName("_index")
-        @Expose
+        @JsonProperty("_index")
         private String index;
-        @SerializedName("_type")
-        @Expose
+        @JsonProperty("_type")
         private String type;
-        @SerializedName("_id")
-        @Expose
+        @JsonProperty("_id")
         private String id;
-        @SerializedName("_score")
-        @Expose
+        @JsonProperty("_score")
         private double score;
-        @SerializedName("_source")
-        @Expose
-        private Source source;
+        @JsonProperty("_source")
+        private Object source;
     }
 
-    @EqualsAndHashCode
+    @Data
     private class Shards {
 
-        @SerializedName("total")
-        @Expose
+        @JsonProperty("total")
         private int total;
-        @SerializedName("successful")
-        @Expose
+        @JsonProperty("successful")
         private int successful;
-        @SerializedName("skipped")
-        @Expose
+        @JsonProperty("skipped")
         private int skipped;
-        @SerializedName("failed")
-        @Expose
+        @JsonProperty("failed")
         private int failed;
-    }
-
-    @EqualsAndHashCode
-    private class Source {
-
-        @SerializedName("user")
-        @Expose
-        private String user;
-        @SerializedName("post_date")
-        @Expose
-        private String postDate;
-        @SerializedName("message")
-        @Expose
-        private String message;
     }
 }

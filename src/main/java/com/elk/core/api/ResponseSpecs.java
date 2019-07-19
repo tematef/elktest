@@ -8,17 +8,22 @@ import java.util.Optional;
 
 public class ResponseSpecs {
 
-    private static ResponseSpecification responseSpecification;
+    private static ResponseSpecification responseJsonSpecification;
+    private static ResponseSpecification responseYamlSpecification;
 
     private ResponseSpecs() { }
 
-    public static ResponseSpecification baseResponseSpec() {
-        return Optional.ofNullable(responseSpecification).orElseGet(() -> responseSpecification = createBaseResponseSpec());
+    public static ResponseSpecification jsonResponseSpec() {
+        return Optional.ofNullable(responseJsonSpecification)
+                .orElseGet(() -> responseJsonSpecification = new ResponseSpecBuilder()
+                        .expectContentType(ContentType.JSON)
+                        .build());
     }
 
-    private static ResponseSpecification createBaseResponseSpec() {
-        return new ResponseSpecBuilder()
-                .expectContentType(ContentType.JSON)
-                .build();
+    public static ResponseSpecification yamlResponseSpec() {
+        return Optional.ofNullable(responseYamlSpecification)
+                .orElseGet(() -> responseYamlSpecification = new ResponseSpecBuilder()
+                        .expectContentType("application/yaml")
+                        .build());
     }
 }
